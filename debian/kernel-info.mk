@@ -43,11 +43,11 @@ KERNEL_CONFIG_USE_DIFFCONFIG = 0
 # KERNEL_PRODUCT_DIFFCONFIG = my_diffconfig
 
 # Defconfig to use
-KERNEL_DEFCONFIG = camellia_in_eea_defconfig
+KERNEL_DEFCONFIG = camellia_defconfig
 
 # Whether to include DTBs with the image. Use 0 (no) or 1.
 # GKI devices should set this to 0
-KERNEL_IMAGE_WITH_DTB = 0
+KERNEL_IMAGE_WITH_DTB = 1
 
 # Path to the DTB
 # If you leave this undefined, an attempt to find it automatically
@@ -83,12 +83,12 @@ KERNEL_IMAGE_WITH_DTB_OVERLAY_IN_KERNEL = 0
 
 # Various other settings that will be passed straight to mkbootimg
 # GKI devices can leave BASE_OFFSET, KERNEL_OFFSET, INITRAMFS_OFFSET, SECOND_OFFSET and TAGS_OFFSET empty
-KERNEL_BOOTIMAGE_PAGE_SIZE = 2048
-KERNEL_BOOTIMAGE_BASE_OFFSET =
-KERNEL_BOOTIMAGE_KERNEL_OFFSET =
-KERNEL_BOOTIMAGE_INITRAMFS_OFFSET =
-KERNEL_BOOTIMAGE_SECONDIMAGE_OFFSET =
-KERNEL_BOOTIMAGE_TAGS_OFFSET =
+KERNEL_BOOTIMAGE_PAGE_SIZE = 4096
+KERNEL_BOOTIMAGE_BASE_OFFSET = 0x00000000
+KERNEL_BOOTIMAGE_KERNEL_OFFSET = 0x00008000
+KERNEL_BOOTIMAGE_INITRAMFS_OFFSET = 0x01000000
+KERNEL_BOOTIMAGE_SECONDIMAGE_OFFSET = 0x00f00000
+KERNEL_BOOTIMAGE_TAGS_OFFSET = 0x00000100
 
 # Specify boot image security patch level if needed
 # KERNEL_BOOTIMAGE_PATCH_LEVEL = 2022-04-05
@@ -98,7 +98,7 @@ KERNEL_BOOTIMAGE_TAGS_OFFSET =
 
 # Required for header version 2, ignore otherwise
 # GKI devices should leave this offset empty
-KERNEL_BOOTIMAGE_DTB_OFFSET =
+KERNEL_BOOTIMAGE_DTB_OFFSET = 0x1f00000
 
 # Kernel bootimage version. Defaults to 0 (legacy header).
 # As a rule of thumb:
@@ -108,7 +108,7 @@ KERNEL_BOOTIMAGE_DTB_OFFSET =
 # Devices launched with Android 11: version 2 or 3 (GKI)
 # Devices launched with Android 12: version 3 (GKI) or 4 (GKI)
 # Devices launched with Android 13: version 3 (GKI) or 4 (GKI)
-KERNEL_BOOTIMAGE_VERSION = 3
+KERNEL_BOOTIMAGE_VERSION = 2
 
 # Kernel initramfs compression. Defaults to gzip.
 # All non-gki devices need a gzip (gz) initramfs
