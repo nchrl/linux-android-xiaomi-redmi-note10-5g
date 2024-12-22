@@ -11,7 +11,7 @@ VARIANT = android
 KERNEL_BASE_VERSION = 4.14-186
 
 # The kernel cmdline to use
-KERNEL_BOOTIMAGE_CMDLINE =  console=tty0 console=ttyMT3,921600n1 root=/dev/ram vmalloc=496M slub_max_order=0 slub_debug=O
+KERNEL_BOOTIMAGE_CMDLINE = bootopt=64S3,32N2,64N2 buildvariant=userdebug
 
 # Slug for the device vendor. This is going to be used in the KERNELRELASE
 # and package names.
@@ -52,7 +52,7 @@ KERNEL_IMAGE_WITH_DTB = 1
 # Path to the DTB
 # If you leave this undefined, an attempt to find it automatically
 # will be made.
-# KERNEL_IMAGE_DTB = arch/arm64/boot/dts/qcom/my_dtb.dtb
+KERNEL_IMAGE_DTB = arch/arm64/boot/dts/mediatek/camellia.dtb
 
 # Whether to include a DTB Overlay. Use 0 (no) or 1.
 # GKI devices should set this to 0
@@ -86,8 +86,8 @@ KERNEL_IMAGE_WITH_DTB_OVERLAY_IN_KERNEL = 0
 KERNEL_BOOTIMAGE_PAGE_SIZE = 2048
 KERNEL_BOOTIMAGE_BASE_OFFSET = 0x40078000
 KERNEL_BOOTIMAGE_KERNEL_OFFSET = 0x00008000
-KERNEL_BOOTIMAGE_INITRAMFS_OFFSET = 0x01000000
-KERNEL_BOOTIMAGE_SECONDIMAGE_OFFSET = 0x00f00000
+KERNEL_BOOTIMAGE_INITRAMFS_OFFSET = 0x11088000
+KERNEL_BOOTIMAGE_SECONDIMAGE_OFFSET = 0xbff88000
 KERNEL_BOOTIMAGE_TAGS_OFFSET = 0x07c08000
 
 # Specify boot image security patch level if needed
@@ -98,7 +98,7 @@ KERNEL_BOOTIMAGE_TAGS_OFFSET = 0x07c08000
 
 # Required for header version 2, ignore otherwise
 # GKI devices should leave this offset empty
-KERNEL_BOOTIMAGE_DTB_OFFSET = 0x1f00000
+KERNEL_BOOTIMAGE_DTB_OFFSET = 0x07c08000
 
 # Kernel bootimage version. Defaults to 0 (legacy header).
 # As a rule of thumb:
@@ -165,7 +165,7 @@ FLASH_INFO_MANUFACTURER = Xiaomi
 # Device model. This must match the `ro.product.vendor.model`
 # Android property. If you don't want to specify this, leave it undefined,
 # FLASH_INFO_CPU will be checked instead.
-FLASH_INFO_MODEL = Redmi Note 10 5G
+FLASH_INFO_MODEL = M2103K19G
 
 # Device CPU. This will be grepped against /proc/cpuinfo to check if
 # we're running on the specific device. Note this is a last-resort
